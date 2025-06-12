@@ -1,0 +1,87 @@
+# SPARQL Wikidata Query Tool
+
+A simple Python tool for querying Wikidata using SPARQL.
+
+## Prerequisites
+
+- Python 3.8 or higher
+- pip (Python package installer)
+
+### For Docker Usage
+
+- [Docker](https://www.docker.com/get-started) (version 19.03.0 or higher)
+- [Docker Compose](https://docs.docker.com/compose/install/) (version 1.25.0 or higher)
+- At least 2GB of RAM available for Docker
+- Internet connection (for downloading Docker images and querying Wikidata)
+
+### For LLM Model Usage
+
+- Sufficient disk space and RAM for model weights (varies by model, typically 4GB+ RAM and 4GB+ disk)
+- If using GPU acceleration: CUDA-compatible GPU and drivers installed
+- Downloaded LLM model files (see project documentation or model provider for details)
+- Set environment variables or configuration files to point to the model location if required
+
+## Installation
+
+1. Clone or download this repository:
+   ```bash
+   git clone https://github.com/yourusername/sparql_wikidata.git
+   cd sparql_wikidata
+   ```
+2. Move into the solution folder in your local solution (if not already there):
+   ```bash
+   cd solution
+   ```
+
+3. Install required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Running the Script
+
+To run the Wikidata query tool:
+
+```bash
+python query_wikidata.py
+```
+## Running with Docker
+
+1. Ensure Docker and Docker Compose are installed and running.
+2. Build and start the service:
+   ```bash
+   docker compose up
+   ```
+3. To run just the main script in a container:
+   ```bash
+   docker compose run --rm app python query_wikidata.py
+   ```
+4. To stop the service:
+   ```bash
+   docker compose down
+   ```
+
+## Viewing the Frontend
+
+If the project includes a web frontend, it will be available after starting the service with Docker Compose.
+
+- Open your browser and go to: [http://localhost:8050](http://localhost:8050)
+- If you changed the port in your Docker or application configuration, use that port instead.
+
+## LLM Model Notes
+
+- If your workflow requires a local LLM, ensure the model files are downloaded and accessible.
+- Some scripts may require you to specify the model path or name via command-line arguments or environment variables.
+- For best performance with large models, use a machine with a dedicated GPU and sufficient memory.
+- Refer to the specific LLM library documentation (e.g., HuggingFace Transformers, llama.cpp, etc.) for additional setup.
+
+## Troubleshooting
+
+- Make sure all dependencies are properly installed
+- Check your internet connection as the script needs to access the Wikidata SPARQL endpoint
+- If you encounter encoding issues, try running Python with the appropriate encoding flag
+- For Docker, ensure you have enough memory allocated and permissions to run Docker commands
+
+## Additional Information
+
+For more complex query examples and documentation on SPARQL syntax, refer to the [Wikidata Query Service](https://query.wikidata.org/) website.

@@ -60,7 +60,7 @@ app.layout = dbc.Container([
     dbc.Card([
         dbc.CardBody([
             html.H4("Natural Language to SPARQL Generator", className="mb-3"),
-            html.P("Type any question and TinyLlama will convert it to a SPARQL query for Wikidata:", className="text-muted"),
+            html.P("Type any question and Qwen models will convert it to a SPARQL query for Wikidata:", className="text-muted"),
             
             dbc.Textarea(
                 id="nl-input",
@@ -109,7 +109,7 @@ app.layout = dbc.Container([
     
     html.Footer([
         html.Hr(),
-        html.P("Wikidata SPARQL Query Service - Using SPARQLWrapper & TinyLlama", className="text-center text-muted")
+        html.P("Wikidata SPARQL Query Service - Using SPARQLWrapper & Qwen", className="text-center text-muted")
     ])
 ], fluid=True, className="py-3")
 
