@@ -1,0 +1,15 @@
+.interpretation-text {
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.interpretation-text ul, .interpretation-text ol {
+    margin-left: 20px;
+}
+
+.interpretation-text p {
+    margin-bottom: 10px;
+}

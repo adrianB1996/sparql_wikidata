@@ -1,0 +1,18 @@
+FROM ollama/ollama:latest
+
+# Install curl for healthcheck and model pulling
+RUN apt-get update && apt-get install -y curl && apt-get clean
+
+# Set the host to listen on all interfaces
+ENV OLLAMA_HOST=0.0.0.0
+
+# Set up healthcheck
+HEALTHCHECK --interval=5s --timeout=5s --retries=10 --start-period=5s \
+  CMD curl -f http://localhost:11434/api/version || exit 1
+
+# Copy the startup script and make it executable
+COPY start-ollama.sh /start-ollama.sh
+RUN chmod +x /start-ollama.sh
+
+# Use the startup script as the entrypoint
+ENTRYPOINT ["/start-ollama.sh"]

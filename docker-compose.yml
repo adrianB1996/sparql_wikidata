@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile.ollama
+    container_name: ollama-tinyllama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./models:/root/.ollama/models
+      - ./Modelfile:/Modelfile
+      - ./Modelfile_qwen:/Modelfile_qwen  # Changed from Modelfile.qwen to Modelfile_qwen
+    restart: unless-stopped
+
+  dash-app:
+    build:
+      context: ./solution
+      dockerfile: Dockerfile.dash
+    container_name: dash-app
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./solution:/app
+    depends_on:
+      - ollama
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1

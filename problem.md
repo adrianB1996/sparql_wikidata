@@ -33,7 +33,6 @@ Plan:
 # Solution help
 
 - I found a website wikidata query service which allows me to test out queries quickly and get live feedback on what they are retrieving. 
-    - Tom Cruise seems to lack date of birth from inital looking. 
     - Found it using 
     ```
     SELECT ?date_of_birth WHERE {
@@ -47,4 +46,7 @@ Plan:
         3 July 1962
     ```
 
-    - This raises two issues I need to categorise the question. I can do this by rule based approach or I could use a tinyLLM? I have a script already made. I'm really tempted to just check if I could get tinyLLMs to do this. 
+    - This raises two issues:
+    
+    - I need to calculate birth date from dd/month/year
+    - I need to categorise the question. I can do this by rule based approach or I could use a tinyLLM? I have a script already made. I'm really tempted to just check if I could get tinyLLMs to do this but it is over kill for the required solution. (Maybe add it on with a dash frontend if I have some extra time.)
