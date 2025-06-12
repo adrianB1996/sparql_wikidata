@@ -50,38 +50,26 @@ python query_wikidata.py
 1. Ensure Docker and Docker Compose are installed and running.
 2. Build and start the service:
    ```bash
-   docker compose up
+   docker compose build --no-cache
    ```
 3. To run just the main script in a container:
    ```bash
-   docker compose run --rm app python query_wikidata.py
+   docker compose run --rm dash-app python query_wikidata.py
    ```
-4. To stop the service:
+
+4. To run the frontend and backend:
+   ```bash
+   docker compose up
+   ```
+
+5. To stop the service:
    ```bash
    docker compose down
    ```
 
 ## Viewing the Frontend
 
-If the project includes a web frontend, it will be available after starting the service with Docker Compose.
-
 - Open your browser and go to: [http://localhost:8050](http://localhost:8050)
 - If you changed the port in your Docker or application configuration, use that port instead.
 
-## LLM Model Notes
 
-- If your workflow requires a local LLM, ensure the model files are downloaded and accessible.
-- Some scripts may require you to specify the model path or name via command-line arguments or environment variables.
-- For best performance with large models, use a machine with a dedicated GPU and sufficient memory.
-- Refer to the specific LLM library documentation (e.g., HuggingFace Transformers, llama.cpp, etc.) for additional setup.
-
-## Troubleshooting
-
-- Make sure all dependencies are properly installed
-- Check your internet connection as the script needs to access the Wikidata SPARQL endpoint
-- If you encounter encoding issues, try running Python with the appropriate encoding flag
-- For Docker, ensure you have enough memory allocated and permissions to run Docker commands
-
-## Additional Information
-
-For more complex query examples and documentation on SPARQL syntax, refer to the [Wikidata Query Service](https://query.wikidata.org/) website.

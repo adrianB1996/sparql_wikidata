@@ -1,4 +1,6 @@
 #!/bin/sh
+
+
 # Start Ollama in background
 ollama serve &
 OLLAMA_PID=$!

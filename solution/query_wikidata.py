@@ -49,7 +49,6 @@ def get_age(person_name: str, endpoint: str):
 
     try:
         results = sparql.query().convert()
-        print(results)
         if results["results"]["bindings"]:
             birth_date = results["results"]["bindings"][0]["date_of_birth"]["value"]
             # Calculate age from birth date
