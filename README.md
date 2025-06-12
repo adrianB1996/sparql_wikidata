@@ -57,7 +57,7 @@ python query_wikidata.py
    docker compose run --rm dash-app python query_wikidata.py
    ```
 
-4. To run the frontend and backend:
+4. To run the frontend and backend. This will take awhile as the models and manifests will need to be pulled through:
    ```bash
    docker compose up
    ```
