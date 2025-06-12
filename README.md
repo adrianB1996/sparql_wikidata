@@ -52,7 +52,7 @@ python query_wikidata.py
    ```bash
    docker compose build --no-cache
    ```
-3. To run just the main script in a container for the interview question:
+3. To run just the main script in a container for the interview question (You may need to run it twice if the container is warming up :):
    ```bash
    docker compose run --rm dash-app python query_wikidata.py
    ```
