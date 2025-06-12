@@ -54,6 +54,7 @@ python query_wikidata.py
    ```
 3. To run just the main script in a container for the interview question (You may need to run it twice if the container is warming up :):
    ```bash
+   docker compose up (Can run this first to avoid early run error)
    docker compose run --rm dash-app python query_wikidata.py
    ```
 
