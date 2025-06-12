@@ -25,7 +25,7 @@ A simple Python tool for querying Wikidata using SPARQL.
 
 1. Clone or download this repository:
    ```bash
-   git clone [https://github.com/yourusername/sparql_wikidata.git](https://github.com/adrianB1996/sparql_wikidata.git)
+   git clone https://github.com/adrianB1996/sparql_wikidata.git
    cd sparql_wikidata
    ```
 2. Move into the solution folder in your local solution (if not already there):
