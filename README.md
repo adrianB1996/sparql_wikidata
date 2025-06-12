@@ -52,7 +52,7 @@ python query_wikidata.py
    ```bash
    docker compose build --no-cache
    ```
-3. To run just the main script in a container:
+3. To run just the main script in a container for the interview question:
    ```bash
    docker compose run --rm dash-app python query_wikidata.py
    ```
@@ -71,5 +71,12 @@ python query_wikidata.py
 
 - Open your browser and go to: [http://localhost:8050](http://localhost:8050)
 - If you changed the port in your Docker or application configuration, use that port instead.
+- You can try out the preselected options or you can try the SPARQL query generator. It can answer about other people or places. (It's very rough)
+- Write in a simple question
+- click generate sparQL --> This will generate a query and check it's formatted correctly. 
+- get results and interpret. 
+- I just wanted to see what I could do with a tiny model. 
+- It can take a little while to interpret the result and respond. 
 
 
+![alt text](image.png)
