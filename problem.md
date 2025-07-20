@@ -1,6 +1,4 @@
-# Problem 
-Got an email saying to solve the below problem:
-
+# Problem to solve
 ```
 def ask(question: str, endpoint: str = 'https://query.wikidata.org/sparql'):
      # please complete this method however you wish
@@ -65,6 +63,6 @@ Plan:
     - How I found this out by was googling wiki data new york with the number. 
     - London recieves multiple results but the result that the interview question in looking for is associated with wd:Q84.
 
-# Explaining the overkill
+# Explaining the project
 
-- I wanted to see if I could create a automatic sparlql query generator that would work on most peoples pc's locally. This was more for my own interest so sorry if it's too much!
+- I wanted to see if I could create a automatic sparlql query generator that would work on most peoples pc's locally.
