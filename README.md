@@ -2,6 +2,24 @@
 
 A simple Python tool for querying Wikidata using SPARQL.
 
+## Table of Contents
+- [SPARQL Wikidata Query Tool](#sparql-wikidata-query-tool)
+- [Prerequisites](#prerequisites)
+  - [For Docker Usage](#for-docker-usage)
+  - [For LLM Model Usage](#for-llm-model-usage)
+- [Installation](#installation)
+- [Running the Script](#running-the-script)
+- [Running with Docker](#running-with-docker)
+- [Viewing the Frontend](#viewing-the-frontend)
+- [SPARQL Wikidata Query Tool: What It Supports](#sparql-wikidata-query-tool-what-it-supports)
+  - [What Works Reliably](#what-works-reliably)
+    - [Supported Examples](#supported-examples)
+      - [1. Person’s Date of Birth](#1-persons-date-of-birth)
+      - [2. City Population](#2-city-population)
+      - [3. Country’s Head of State](#3-countrys-head-of-state)
+  - [Usage Notes & Limitations](#usage-notes--limitations)
+- [Summary](#summary)
+
 ## Prerequisites
 
 - Python 3.8 or higher
@@ -77,6 +95,90 @@ python query_wikidata.py
 - get results and interpret. 
 - I just wanted to see what I could do with a tiny model. 
 - It can take a little while to interpret the result and respond. 
+
+
+# SPARQL Wikidata Query Tool: What It Supports
+
+This tool uses a small language model to help you generate SPARQL queries for Wikidata using natural language.
+**It is designed only for specific simple query types shown in its model file.** See details below.
+
+## What Works Reliably
+
+This tool can reliably answer **only the exact question patterns included in its model file**.
+Anything beyond these—such as combining filters, asking for data not shown in the examples, or using different phrasing—is **not supported**.
+
+**You can ask about different people, cities, or countries—just make sure your question follows the same structure as the examples below.**
+For instance, you can substitute Tom Cruise with another actor (e.g., "How old is Brad Pitt?"), London with another city, or France with another country.
+As long as you stick to the exact pattern, you can use any specific name or place.
+
+### Supported Examples
+
+#### 1. Person’s Date of Birth
+
+How old is Tom Cruise? *(works for any actor, musician, etc. if you use this format)*
+
+```sparql
+SELECT ?date_of_birth WHERE {
+  ?person rdfs:label "Tom Cruise"@en ;
+          wdt:P569 ?date_of_birth .
+}
+LIMIT 1
+```
+
+
+#### 2. City Population
+
+What is the population of London? *(works for any city if you use this format)*
+
+```sparql
+SELECT ?population WHERE {
+  ?location rdfs:label "London"@en ;
+            wdt:P1082 ?population .
+}
+ORDER BY DESC(?population)
+LIMIT 1
+```
+
+
+#### 3. Country’s Head of State
+
+Who is the president of France? *(works for any country if you use this format)*
+
+```sparql
+SELECT ?president ?presidentLabel WHERE {
+  ?country rdfs:label "France"@en ;
+           wdt:P35 ?president .
+  ?president rdfs:label ?presidentLabel .
+  FILTER(LANG(?presidentLabel) = "en")
+}
+LIMIT 1
+```
+
+
+## Usage Notes \& Limitations
+
+- **Only the above formats (or very close variants) will reliably work.**
+- You can swap in different names, cities, or countries—just keep the question’s structure identical to the examples.
+- For any other question type—even if only a little more complex or phrased differently—this tool is **not likely** to produce a working SPARQL query.
+- If your straightforward query doesn’t work the first time, try rerunning it. Sometimes a second run resolves initial mistakes.
+- Complex or multi-step queries (for example, filtering by date, combining several properties, or using information about more than one entity) are not supported—even if similar queries are included as examples in the prompt.
+
+| What Works Best | Examples |
+| :-- | :-- |
+| Single property for an entity | Tom Cruise’s birth date, Brad Pitt’s birth date, Beyoncé’s birth date |
+| Simple statistic for a place | London’s population, Tokyo’s population |
+| Relationship for one country | President of France, Head of State of Germany |
+
+## Summary
+
+**This tool is for simple, specific fact lookups only, using question types already found in its examples above.**
+For anything else, SPARQL query results will be unpredictable or simply not returned.
+
+If in doubt, copy your question to match the style of the working examples above, but feel free to use any other person, city, or country name.
+
+*Questions, feedback, or issues? Please open an issue or pull request!*
+
+
 
 
 ![alt text](image.png)
